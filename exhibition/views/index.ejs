@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>지암전시회</title>
+    <!-- Bootstrap Css -->
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <!-- Style -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/lightgallery.css" />
+    </head>
+    <body>
+      <div id = "reload">
+      </div>
+            <div class="header">
+		<a href="/">
+                <h1>Jiam <span>3th</span> Exhibition</h1>
+                <h3>2016 JIAM INNOVATORS' STUDIO</h3>
+		</a>
+            </div>
+        <div class="wrap">
+            <div class="grid">
+              <div id = "lightgallery">
+              <% for(var i=visitNum-1;i>-1;i--) {%>
+                <a href="img/visitant/<%= pictureNum[i]%>.jpg" class="box" data-sub-html='<%=guestBook[i]%>
+                </br>
+                <div id ="formDiv" class="comment" style=display:none>
+                  <form method="post" action="/update">
+                  <input type="text" class="button" id = "email" name ="data" placeholder= "<%=guestBook[i]%>">
+                  <input type="submit" class ="button" id ="submit" value="완료" onclick=reload()>
+                  <input type="hidden" name="index" value=<%=pictureNum[i]%>>
+                  </form>
+                </div>
+                <br>
+                <div class="button-grid">
+                  <input type="submit" class="button" id ="submit" value="수정" onclick=test(this.value,"formDiv")>
+                </div>
+                <div class="button-grid">
+                  <form method="post" action="/delete">
+                    <input type="submit" class="button" id ="submit" value="삭제">
+                    <input type="hidden" name="index" value=<%=pictureNum[i]%>>
+                  </form>
+                </div>
+                  '>
+		    <%if(i==visitNum-1){%>
+                    <span>New</span>
+		    <% }%>
+                    <img src="img/visitant/<%= pictureNum[i]%>.jpg" alt="1">
+                    <p><%=guestBook[i]%></p>
+                </a>
+              <% } %>
+            </div>
+            </div>
+        </div>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <!-- jQuery version must be >= 1.8.0; -->
+       <script src="js/lightgallery-all.js"></script>
+       <!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#lightgallery").lightGallery({
+                });
+            });
+        </script>
+        <script>
+        function test(a,b) {
+          if(a=="수정"){
+            document.getElementById(b).style.display="";
+          }
+          else{
+            document.getElementById(b).style.display="none";
+          }
+        }
+        </script>
+        <script>
+        function reload(){
+          window.location.reload(true);
+        }
+        </script>
+    </body>
+
+</html>

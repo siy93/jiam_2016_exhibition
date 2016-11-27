@@ -1,0 +1,56 @@
+.input {
+  display: flex;
+  align-items: center;
+}
+
+
+.button {
+  height: 44px;
+  border: none;
+}
+
+
+#email {
+  width: 75%;
+  background: #FDFCFB;
+  font-family: inherit;
+  color: #737373;
+  letter-spacing: 1px;
+  text-indent: 5%;
+  border-radius: 5px 0 0 5px;
+}
+
+
+#submit {
+  width: 50px;
+  height: 26px;
+  background: #ff5e5e;
+  font-family: inherit;
+  color: inherit;
+  letter-spacing: 2px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background .3s ease-in-out;
+  text-align: center;
+}
+
+
+#submit:hover {
+  background: #d45d7d;
+}
+
+.button-grid {
+  display: inline-block;
+  margin: 5px;
+}
+
+.comment {
+  margin: 8px;
+}
+
+
+input:focus {
+  outline: none;
+  outline: 2px solid #E86C8D;
+  box-shadow: 0 0 2px #E86C8D;
+}
